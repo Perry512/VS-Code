@@ -131,7 +131,7 @@ print(userWeekWage)
 
 # Exercise 22: Write a script that prompts the user to enter a number of years, Calculate the number of seconds is in that many years
 
-userYears = input("Enter a number of years to convert to seconds")
+userYears = input("Enter a number of years to convert to seconds: ")
 
 userSeconds = int(userYears) * 365 * 24 * 60 * 60
 
