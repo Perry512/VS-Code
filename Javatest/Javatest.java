@@ -4,10 +4,11 @@ public class Javatest {
         
         Characters solBadGuy = new Characters("Sol Badguy");
 
-        System.out.println(solBadGuy);
+        System.out.println(Character.goldLewis.toString());
 
     }
 }
+
 /*
 ////////////////////////////////////////////////////////////////////
 Creating the Character Class
@@ -21,6 +22,17 @@ class Characters {
 
     public Archetype type;
     public String charName;
+    public MoveSet [] moveSet;
+
+    
+
+    public Characters (String charName, Archetype type, MoveSet[] moveSet){
+
+        this.charName = charName;
+        this.type = type;
+        this.moveSet = moveSet;
+
+    }
 
     public Characters (String charName, Archetype type) {
 
@@ -32,6 +44,12 @@ class Characters {
     public Characters (String charName) {
 
         this.charName = charName;
+
+    }
+
+    public String toString() {
+
+        return this.charName;
 
     }
 
@@ -63,7 +81,7 @@ class Moves {
         TwoD("2D"),
         FarSlash("f.S");
 
-        private String moName;
+        public String moName;
 
         private MoveNames (String moName){
 
@@ -76,7 +94,7 @@ class Moves {
 }
 
 class Archetype {
-  
+
     public enum ArchetypeNames {
   
         Shoto("Shoto"),
@@ -93,6 +111,26 @@ class Archetype {
             this.label = label;
 
         }
+
+    }
+
+}
+
+class MoveSet {
+
+    Moves[] moves;
+
+    public Moves[] getMoves() {
+        return moves;
+    }
+
+    public void setMoves(Moves[] moves) {
+        this.moves = moves;
+    }
+
+    private MoveSet(Moves[] moves) {
+
+        this.moves = moves;
 
     }
 
