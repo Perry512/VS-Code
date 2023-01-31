@@ -59,6 +59,7 @@ const characterFactory = new characterBuilder();
 
 const sol = characterFactory.create( {
 
+    fiveK:3
 }};
 
 
