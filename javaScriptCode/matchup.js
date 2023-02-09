@@ -20,14 +20,26 @@ function moveVsMoveCheck(x,y) {
 
 }
 
+class MoveName extends Enumify {
 
+    static fiveP = new MoveName();
+    static fiveK = new MoveName();
+    static fiveS = new MoveName();
+    static fiveH = new MoveName();
+    static twoP = new MoveName();
+    static twoK = new MoveName();
+    static twoS = new MoveName();
+    static twoH = new MoveName();
+    static twoD = new MoveName();
 
-class character {
+}
+
+class Character {
 
     constructor (options) {
 
         this.cName = options.cName || "template";
-        this.fiveP = options.fiveP || 3;
+        this.fiveP = options.MoveName.fiveP || 3;
         this.fiveK = options.fiveK || 3;
         this.fiveS = options.fiveS || 3;
         this.fiveH = options.fiveH || 3;
@@ -42,25 +54,56 @@ class character {
 
 }
 
-class characterBuilder {
+class CharacterBuilder {
 
     create = (options) => {
 
         let uCharacter;
 
-        uCharacter = new character(options);
+        uCharacter = new Character(options);
 
         return uCharacter;
 
     }  
 }
 
-const characterFactory = new characterBuilder();
+const characterFactory = new CharacterBuilder();
 
 const sol = characterFactory.create( {
 
-    fiveK:3
-}};
+    cName: "Sol Badguy",
+    fiveP: 3,
+    fiveK: 3,
+    fiveH: 3, 
+    fiveS: 3,
+    twoP: 4,
+    twoK: 4,
+    twoS: 13,
+    twoH: 14,
+    twoD: 10
+
+});
+
+const ram = characterFactory.create( {
+
+    cName:"Ramlethal Valentine",
+    fiveP: 5,
+    fiveK: 7,
+    fiveS: 11,
+    fiveH: 12,
+    twoP: 6,
+    twoK: 6,
+    twoS: 10,
+    twoH: 14,
+    twoD: 10
+
+});
+
+const goldLewis = characterFactory.create({
+
+    cName: "Goldlewis Dickinson",
+    MoveName
+}) 
 
 
 
@@ -91,12 +134,11 @@ build() {
 
 function main() {
 
-    var goldLewis = new characterBuilder() 
-
+    /*
     goldLewis.cName("Goldlewis");
     goldLewis.normalMoves(7,10,10,19,5,8,13,20,14,12)
     goldLewis.build();
-
+    */
 
 }
 
