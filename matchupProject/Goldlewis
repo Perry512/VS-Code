@@ -1,7 +1,0 @@
-public class Goldlewis extends Character {
-
-    
-    goldlewis.setCharacterMoveSet(Moves[] moves = new Moves {2P,5K,FarSlash});
-    Character goldLewis = new Character("Goldlewis", Shoto, moves);
-
-}
