@@ -13,31 +13,58 @@ class Character {
         console.log(this.cName);
 
     }
-
+    //Gives the moves object itself, looks super ugly but we ball
     displayMovesRaw() {
 
         for (var i = 0; i < this.moves.length; i++) {
 
             console.log(this.moves[i]);
-        }
-    }
 
+        }
+
+    }
+    //I forget why this exists
     displayMoveNames() {
 
-        for (var i = 0; i < this.moves.length; i++) {
+        const rosterOfMoveNames = [];
 
-            console.log(this.moves[i].mName);
+        for (var i = 0; i < this.moves.length ; i++) {
+
+            rosterOfMoveNames.push(this.moves[i].mName);
 
         }
+
+        return rosterOfMoveNames;
+
     }
 
     
-    displayFrames() {
+    displayAllFrames() {
+
+        const frames = [];
 
         for (var i = 0; i < this.moves.length; i++) {
 
-            console.log(this.moves[i].mStartup);
+            frames.push(this.moves[i].mStartup);
+
         }
+        
+        return frames;
+
+    }
+
+    computeSingleMoveFrame(moveRequest) {
+
+        for (var i = 0; i < this.moves.length; i++) {
+
+            if(moveRequest == this.moves[i].mName) {
+
+                return this.moves[i].mStartup;
+
+            }
+
+        }
+
     }
 
 }
@@ -54,6 +81,7 @@ class Characters {
 
         let c = new Character(name, archetype, moves);
         this.characters.push(c);
+
         return c;
 
     }
@@ -74,94 +102,89 @@ class Characters {
 
 let roster = new Characters();
 
-roster.newCharacter("Goldlewis", "One-Shot", [
+roster.newCharacter("Goldlewis", ["Strike-Throw", "One-Shot"], [
     
-    {mName: "5P", mStartup: 7},
-    {mName: "5K", mStartup: 8},
-    {mName: "5S", mStartup: 10},
-    {mName: "5H", mStartup: 19}, 
-    {mName: "2P", mStartup: 5},
-    {mName: "2K", mStartup: 8},
-    {mName: "2S", mStartup: 13},
-    {mName: "2H", mStartup: 20}
+    {mName: "5P", mStartup: 7, mActive: 0},
+    {mName: "5K", mStartup: 8, mActive: 0},
+    {mName: "5S", mStartup: 10, mActive: 0},
+    {mName: "5H", mStartup: 19, mActive: 0}, 
+    {mName: "2P", mStartup: 5, mActive: 0},
+    {mName: "2K", mStartup: 8, mActive: 0},
+    {mName: "2S", mStartup: 13, mActive: 0},
+    {mName: "2H", mStartup: 20, mActive: 0}
 
     ]
 );
 
 
-roster.newCharacter("Sol Badguy", "Rushdown", [
+roster.newCharacter("Sol Badguy", ["Strike-Throw", "Rushdown"], [
   
-    {mName: "5P", mStartup: 5},
-    {mName: "5K", mStartup: 3},
-    {mName: "5S", mStartup: 10},
-    {mName: "5H", mStartup: 11}, 
-    {mName: "2P", mStartup: 5},
-    {mName: "2K", mStartup: 4},
-    {mName: "2S", mStartup: 13},
-    {mName: "2H", mStartup: 20}
+    {mName: "5P", mStartup: 5, mActive: 0},
+    {mName: "5K", mStartup: 3, mActive: 0},
+    {mName: "5S", mStartup: 10, mActive: 0},
+    {mName: "5H", mStartup: 11, mActive: 0}, 
+    {mName: "2P", mStartup: 5, mActive: 0},
+    {mName: "2K", mStartup: 4, mActive: 0},
+    {mName: "2S", mStartup: 13, mActive: 0},
+    {mName: "2H", mStartup: 20, mActive: 0}
     ]
 
 );
 
-roster.fullRoster.forEach(character => character.displayMoves());
+roster.newCharacter("May", ["Rushdown", "Charge"], [
 
-/*
-Characters.addCharacterRoster(new Builder("Sol Badguy", "Rushdown", [
-    { name: "Dragon Punch", startUp: 4, active: 2, recovery: 18 },
-    { name: "Volcanic Viper", startUp: 14, active: 2, recovery: 24 }
-    
-]));
+    {mName: "5P", mStartup: 4, mActive: 0},
+    {mName: "5K", mStartup: 8, mActive: 0},
+    {mName: "5S", mStartup: 12, mActive: 0},
+    {mName: "5H", mStartup: 13, mActive: 0}, 
+    {mName: "2P", mStartup: 5, mActive: 0},
+    {mName: "2K", mStartup: 6, mActive: 0},
+    {mName: "2S", mStartup: 10, mActive: 0},
+    {mName: "2H", mStartup: 11, mActive: 0}    
+    ]
 
-newRoster.addCharacterRoster(new Builder("May", "Blanka", [
+);
 
-    { name: "5P", startUp: 5, active: 2, recovery: 2 },
-    { name: "5K", startUp: 7, active: 3, recovery: 3 },
+roster.newCharacter("Ramlethal Valentine", ["Zoner", "Rushdown"], [
 
-]));
-    
-console.log(characterRoster);
+    {mName: "5P", mStartup: 5, mActive: 0},
+    {mName: "5K", mStartup: 7, mActive: 0},
+    {mName: "5S", mStartup: 11, mActive: 0},
+    {mName: "5H", mStartup: 12, mActive: 0}, 
+    {mName: "2P", mStartup: 6, mActive: 0},
+    {mName: "2K", mStartup: 6, mActive: 0},
+    {mName: "2S", mStartup: 10, mActive: 0},
+    {mName: "2H", mStartup: 14, mActive: 0} 
+    ]
 
-    const sol = new Builder()
-    .setName("Sol Badguy")
-    .setArchetype("Rushdown")
-    .addMove({ name: "Dragon Punch", startUp: 4, active: 2, recovery: 18 })
-    .addMove({ name: "Volcanic Viper", startUp: 14, active: 2, recovery: 24 })
-    .build();
+);
 
+function doToRoster() {
+ 
+    roster.fullRoster.forEach(character => character.displayName());
 
-    static ram = new Builder()
-    .setName("Ramlethal Valentine")
-    .setArchetype("Rushdown")
-    .addMove({ name: "fiveP", startUp: 5, active: 1, recovery: 1 })
-    .addMove({ name: "fiveK", startUp: 7, active: 1, recovery: 1 })
-    .addMove({ name: "fiveS", startUp: 11, active: 1, recovery: 1 })
-    .addMove({ name: "fiveH", startUp: 12, active: 1, recovery: 1 })
-    .addMove({ name: "twoP", startUp: 6, active: 1, recovery: 1 })
-    .addMove({ name: "twoK", startUp: 6, active: 1, recovery: 1 })
-    .addMove({ name: "twoS", startUp: 10, active: 1, recovery: 1 })
-    .addMove({ name: "twoH", startUp: 14, active: 1, recovery: 1 })
-    .addMove({ name: "twoD", startUp: 10, active: 1, recovery: 1 })
-    .build();
+}
 
-    static goldLewis = new Builder()
-    .setName("Goldlewis Dickinson")
-    .setArchetype("One-shot")
-    .addMove({ name: "fiveP", startUp: 7, active: 1, recovery: 1 })
-    .addMove({ name: "fiveK", startUp: 10, active: 1, recovery: 1 })
-    .addMove({ name: "fiveS", startUp: 10, active: 1, recovery: 1 })
-    .addMove({ name: "fiveH", startUp: 19, active: 1, recovery: 1 })
-    .addMove({ name: "twoP", startUp: 5, active: 1, recovery: 1 })
-    .addMove({ name: "twoK", startUp: 8, active: 1, recovery: 1 })
-    .addMove({ name: "twoS", startUp: 13, active: 1, recovery: 1 })
-    .addMove({ name: "twoH", startUp: 20, active: 1, recovery: 1 })
-    .addMove({ name: "twoD", startUp: 14, active: 1, recovery: 1 })
-    .build();
+function showSpecificChar(userCharacter) {
 
-    */
+    console.log(roster.fullRoster[userCharacter].displayFrames());
 
+}
 
-// Going to start transferring above to a factory method, this should cause too many problems right? :)))))
-  
+function showCharacterMoveRoster(userCharacter) {
 
-  
-//}
+    console.log(roster.fullRoster[userCharacter].displayMoveNames());
+
+}
+
+function displayAllMoveFrame(userCharacter) {
+
+    console.log(roster.fullRoster[userCharacter].displayAllFrames());
+
+}
+
+function displaySingleMoveFrame(userCharacter,userMove) {
+
+    console.log(roster.fullRoster[userCharacter].computeSingleMoveFrame(userMove));
+
+}
