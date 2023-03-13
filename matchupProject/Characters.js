@@ -1,16 +1,17 @@
 class Character {
     
-    constructor(cName, archetype, moves) {
+    constructor(cName, archetype, moves, specialMoves) {
 
         this.cName = cName;
         this.archetype = archetype;
         this.moves = moves;
+        this.specialMoves = specialMoves;
 
     }
 
-    displayName() {
+    get computeName() {
 
-        console.log(this.cName);
+        return(this.cName);
 
     }
     //Gives the moves object itself, looks super ugly but we ball
@@ -79,7 +80,7 @@ class Characters {
 
     newCharacter(name, archetype, moves) {
 
-        let c = new Character(name, archetype, moves);
+        let c = new Character(name, archetype, moves, specialMoves);
         this.characters.push(c);
 
         return c;
@@ -113,8 +114,15 @@ roster.newCharacter("Goldlewis", ["Strike-Throw", "One-Shot"], [
     {mName: "2S", mStartup: 13, mActive: 0},
     {mName: "2H", mStartup: 20, mActive: 0}
 
-    ]
-);
+],
+
+[
+
+    {speicalName: "248BT", mStartup: 12, mActive: 15, isStrike: true, isThrow: false},
+    {speicalName: "268BT", mStartup: 12, mActive: 15, isStrike: true, isThrow: false},
+    {specialName: "684BT", mStartup: 12, mActive: 20, isStrike: true, isThrow: false}
+
+]);
 
 
 roster.newCharacter("Sol Badguy", ["Strike-Throw", "Rushdown"], [
@@ -127,9 +135,15 @@ roster.newCharacter("Sol Badguy", ["Strike-Throw", "Rushdown"], [
     {mName: "2K", mStartup: 4, mActive: 0},
     {mName: "2S", mStartup: 13, mActive: 0},
     {mName: "2H", mStartup: 20, mActive: 0}
-    ]
+],
 
-);
+[
+
+    {speicalName: "Bandit Revolver", mStartup: 12, mActive: 6, isStrike: true, isThrow: false},
+    {specialName: "Gunflame", mStartup: 18, mActive: 32, isStrike: true, isThrow: false},
+    {specialName: "Wild Throw", mStartup: 6, mActive: 2, isStrike: false, isThrow: true}
+
+]);
 
 roster.newCharacter("May", ["Rushdown", "Charge"], [
 
@@ -141,9 +155,16 @@ roster.newCharacter("May", ["Rushdown", "Charge"], [
     {mName: "2K", mStartup: 6, mActive: 0},
     {mName: "2S", mStartup: 10, mActive: 0},
     {mName: "2H", mStartup: 11, mActive: 0}    
-    ]
+    
+    ],
 
-);
+    [
+
+    {specialName: "SVerticalDolphin", mStartup: 6, mActive: 19, isStrike: true, isThrow: false}, 
+    {specialName: "SVerticalDolphin", mStartup: 7, mActive: 18, isStrike: true, isThrow: false},
+    {specialName: "Overhead Kiss", mStartup: 6, mActive: 2, isStrike: false, isThrow: true}
+
+]);
 
 roster.newCharacter("Ramlethal Valentine", ["Zoner", "Rushdown"], [
 
@@ -155,9 +176,16 @@ roster.newCharacter("Ramlethal Valentine", ["Zoner", "Rushdown"], [
     {mName: "2K", mStartup: 6, mActive: 0},
     {mName: "2S", mStartup: 10, mActive: 0},
     {mName: "2H", mStartup: 14, mActive: 0} 
-    ]
+    
+    ],
 
-);
+    [
+
+    {specialName: "Slido Detruo", mStartup: 30, mActive: 2, isStrike: true, isThrow: false},
+    {specialName: "SBajoneto", mStartup: 20, mActive: 15, isStrike: true, isThrow: false},
+    {specialName: "HBajoneto", mStartup: 20, mActive: 15, isStrike: true, isThrow: false}
+    
+]);
 
 function doToRoster() {
  
