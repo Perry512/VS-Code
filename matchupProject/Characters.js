@@ -166,6 +166,7 @@ roster.newCharacter("Goldlewis", ["Strike-Throw", "One-Shot"], [
     new NormalMove("5K", 10, 9, true, false),
     new NormalMove("c.S", 7, 6, true, false),
     new NormalMove("5S", 10, 3, true, false),
+    new NormalMove("5H", 19, 6, true, false),
     new NormalMove("2P", 5, 3, true, false),
     new NormalMove("2K", 8, 3, true, false),
     new NormalMove("2S", 13, 3, true, false),
@@ -175,8 +176,8 @@ roster.newCharacter("Goldlewis", ["Strike-Throw", "One-Shot"], [
 
     [
 
-    {speicalName: "248BT", mStartup: 12, mActive: 15, isStrike: true, isThrow: false},
-    {speicalName: "268BT", mStartup: 12, mActive: 15, isStrike: true, isThrow: false},
+    {specialName: "248BT", mStartup: 12, mActive: 15, isStrike: true, isThrow: false},
+    {specialName: "268BT", mStartup: 12, mActive: 15, isStrike: true, isThrow: false},
     {specialName: "684BT", mStartup: 12, mActive: 20, isStrike: true, isThrow: false}
 
 ]);
@@ -184,20 +185,21 @@ roster.newCharacter("Goldlewis", ["Strike-Throw", "One-Shot"], [
 
 roster.newCharacter("Sol Badguy", ["Strike-Throw", "Rushdown"], [
   
-    {mName: "5P", mStartup: 5, mActive: 0},
-    {mName: "5K", mStartup: 3, mActive: 0},
-    {mName: "5S", mStartup: 10, mActive: 0},
-    {mName: "5H", mStartup: 11, mActive: 0}, 
-    {mName: "2P", mStartup: 5, mActive: 0},
-    {mName: "2K", mStartup: 4, mActive: 0},
-    {mName: "2S", mStartup: 13, mActive: 0},
-    {mName: "2H", mStartup: 20, mActive: 0}
-
+    new NormalMove("5P", 4, 5, true, false),
+    new NormalMove("5K", 3, 4, true, false),
+    new NormalMove("c.S", 7, 6, true, false),
+    new NormalMove("5S", 10, 2, true, false),
+    new NormalMove("5H", 11, 4, true, false),
+    new NormalMove("2P", 5, 3, true, false),
+    new NormalMove("2K", 8, 3, true, false),
+    new NormalMove("2S", 13, 3, true, false),
+    new NormalMove("2H", 20, 4, true, false),
+    
     ],
 
     [
 
-    {speicalName: "Bandit Revolver", mStartup: 12, mActive: 6, isStrike: true, isThrow: false},
+    {specialName: "Bandit Revolver", mStartup: 12, mActive: 6, isStrike: true, isThrow: false},
     {specialName: "Gunflame", mStartup: 18, mActive: 32, isStrike: true, isThrow: false},
     {specialName: "Wild Throw", mStartup: 6, mActive: 2, isStrike: false, isThrow: true}
 
@@ -205,14 +207,15 @@ roster.newCharacter("Sol Badguy", ["Strike-Throw", "Rushdown"], [
 
 roster.newCharacter("May", ["Rushdown", "Charge"], [
 
-    {mName: "5P", mStartup: 4, mActive: 0},
-    {mName: "5K", mStartup: 8, mActive: 0},
-    {mName: "5S", mStartup: 12, mActive: 0},
-    {mName: "5H", mStartup: 13, mActive: 0}, 
-    {mName: "2P", mStartup: 5, mActive: 0},
-    {mName: "2K", mStartup: 6, mActive: 0},
-    {mName: "2S", mStartup: 10, mActive: 0},
-    {mName: "2H", mStartup: 11, mActive: 0}    
+    new NormalMove("5P", 4, 3, true, false),
+    new NormalMove("5K", 8, 6, true, false),
+    new NormalMove("c.S", 7, 6, true, false),
+    new NormalMove("5S", 12, 3, true, false),
+    new NormalMove("5H", 13, 8, true, false),
+    new NormalMove("2P", 5, 4, true, false),
+    new NormalMove("2K", 6, 4, true, false),
+    new NormalMove("2S", 10, 3, true, false),
+    new NormalMove("2H", 11, 13, true, false),
     
     ],
 
@@ -226,14 +229,15 @@ roster.newCharacter("May", ["Rushdown", "Charge"], [
 
 roster.newCharacter("Ramlethal Valentine", ["Zoner", "Rushdown"], [
 
-    {mName: "5P", mStartup: 5, mActive: 0},
-    {mName: "5K", mStartup: 7, mActive: 0},
-    {mName: "5S", mStartup: 11, mActive: 0},
-    {mName: "5H", mStartup: 12, mActive: 0}, 
-    {mName: "2P", mStartup: 6, mActive: 0},
-    {mName: "2K", mStartup: 6, mActive: 0},
-    {mName: "2S", mStartup: 10, mActive: 0},
-    {mName: "2H", mStartup: 14, mActive: 0} 
+    new NormalMove("5P", 5, 4, true, false),
+    new NormalMove("5K", 7, 3, true, false),
+    new NormalMove("c.S", 7, 6, true, false),
+    new NormalMove("5S", 11, 6, true, false),
+    new NormalMove("5H", 12, 3, true, false),
+    new NormalMove("2P", 6, 4, true, false),
+    new NormalMove("2K", 6, 5, true, false),
+    new NormalMove("2S", 10, 4, true, false),
+    new NormalMove("2H", 14, 9, true, false),
 
     ],
 
@@ -245,12 +249,15 @@ roster.newCharacter("Ramlethal Valentine", ["Zoner", "Rushdown"], [
     
 ]);
 
+//Was meant to be a easy way to test doing something to a single character, change last function
+//Works as of 3/15/23
 function doToRoster() {
  
-    roster.fullRoster.forEach(character => character.displayName());
+    roster.fullRoster.forEach(character => console.log(character.computeName));
 
 }
 
+//
 function showSpecificChar(userCharacter) {
 
     console.log(roster.fullRoster[userCharacter].displayFrames());
@@ -283,4 +290,4 @@ function displayNormalMoves(userCharacter) {
 
 }
 
-displayNormalMoves(0)
+showSpecificCharacter(1);
