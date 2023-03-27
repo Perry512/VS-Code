@@ -25,7 +25,7 @@ class Character {
 
     }
     //I forget why this exists
-    displayMoveNames() {
+    get displayMoveNames() {
 
         const rosterOfMoveNames = [];
 
@@ -50,6 +50,12 @@ class Character {
         }
         
         return frames;
+
+    }
+
+    getMoves() {
+
+        return Array.from(this.moves.values());
 
     }
 
@@ -158,6 +164,20 @@ class NormalMove {
     
 }
 
+class SpecialMove extends NormalMove {
+
+    constructor(normalMoveName, normalMoveStartup, normalMoveActive, isStrike, isThrow, specialInput) {
+
+        this.normalMoveName = normalMoveName;
+        this.normalMoveStartup = normalMoveStartup;
+        this.normalMoveActive = normalMoveActive;
+        this.isStrike = isStrike;
+        this.isThrow = isThrow;
+        this.specialInput = specialInput;
+
+    }
+}
+
 let roster = new Characters();
 
 roster.newCharacter("Goldlewis", ["Strike-Throw", "One-Shot"], [
@@ -249,24 +269,25 @@ roster.newCharacter("Ramlethal Valentine", ["Zoner", "Rushdown"], [
     
 ]);
 
-//Was meant to be a easy way to test doing something to a single character, change last function
-//Works as of 3/15/23
-function doToRoster() {
+//Displays the entire character roster, name only
+//Works as of 3/16/23
+function displayFullCharacterRosterNames() {
  
-    roster.fullRoster.forEach(character => console.log(character.computeName));
+    //this forEach will probably(?) have to be changed when characters are stored in a map instead of an array 
+    var characterRoster = roster.fullRoster.map(character => character.computeName);
+
+    return characterRoster;
 
 }
 
-//
-function showSpecificChar(userCharacter) {
-
-    console.log(roster.fullRoster[userCharacter].displayFrames());
-
-}
-
+//Should return a single characters moveset in just its names
+//Does not work 5/15/23
+//Currently will just give a new line and then the array of moves but every value for the moves are also undefined
 function showCharacterMoveRoster(userCharacter) {
 
-    console.log(roster.fullRoster[userCharacter].displayMoveNames());
+    var characterMoveRoster = roster.fullRoster[userCharacter].computeNormalMoveNames();
+
+    return characterMoveRoster;
 
 }
 
@@ -290,4 +311,40 @@ function displayNormalMoves(userCharacter) {
 
 }
 
-showSpecificCharacter(1);
+function showMoves() {
+    var characterName = document.getElementById("character-name").value;
+    var moveList = showCharacterMoveRoster(characterName);
+    var moveListElement = document.getElementById("move-list");
+  
+    // Clear previous move list
+    moveListElement.innerHTML = "";
+  
+    // Create new move list
+    var list = document.createElement("ul");
+    for (var i = 0; i < moveList.length; i++) {
+      var item = document.createElement("li");
+      item.innerText = moveList[i].name;
+      list.appendChild(item);
+    }
+  
+    // Add move list to page
+    moveListElement.appendChild(list);
+
+}
+  
+
+function main() {
+
+    let myInput = 0;
+
+    console.log("Welcome to program, here is where the menu system will remain for a bit");
+
+    console.log("Here is the main roster for now");
+
+    console.log(showCharacterMoveRoster(1));
+
+    
+
+}
+
+main();
